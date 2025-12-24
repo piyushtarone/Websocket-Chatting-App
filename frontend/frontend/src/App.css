@@ -1,0 +1,472 @@
+/* ================= ROOT ================= */
+
+#root {
+  max-width: 1400px;
+  margin: auto;
+  padding: 2rem;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+/* ================= HEADER ================= */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-weight: 600;
+}
+
+/* ================= BUTTONS ================= */
+
+button {
+  background: linear-gradient(
+    135deg,
+    var(--sand-soft),
+    #cbb7aa
+  );
+  color: #1b3a4b;
+  border: none;
+  padding: 0.6rem 1.1rem;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(217, 200, 188, 0.35);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ================= AUTH ================= */
+
+.auth-card {
+  max-width: 420px;
+  margin: auto;
+  background: linear-gradient(
+    180deg,
+    var(--bg-panel),
+    var(--bg-main)
+  );
+  border-radius: 16px;
+  padding: 1.6rem;
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 20px 40px var(--shadow-soft);
+}
+
+.tabs {
+  display: flex;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.tabs button {
+  flex: 1;
+  background: transparent;
+  color: var(--text-muted);
+}
+
+.tabs .active {
+  background: var(--bg-surface);
+  color: var(--text-main);
+}
+
+/* ================= INPUTS ================= */
+
+input,
+select {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-soft);
+  color: var(--text-main);
+  padding: 0.75rem 0.9rem;
+  border-radius: 10px;
+  font-size: 0.95rem;
+}
+
+input::placeholder {
+  color: var(--text-muted);
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* ================= CHAT LAYOUT ================= */
+
+.chat-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  height: calc(100vh - 160px);
+  gap: 1.4rem;
+}
+
+/* ================= SIDEBAR ================= */
+
+.sidebar {
+  background: linear-gradient(
+    180deg,
+    var(--bg-panel),
+    var(--bg-main)
+  );
+  border-radius: 16px;
+  padding: 1.2rem;
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 20px 40px var(--shadow-soft);
+}
+
+.sidebar h3 {
+  margin-top: 0;
+  font-size: 1.2rem;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.sidebar li {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.6rem 0.8rem;
+  border-radius: 10px;
+  transition: background 0.2s ease;
+}
+
+.sidebar li:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ================= CHAT MAIN ================= */
+
+.chat-main {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(
+    180deg,
+    var(--bg-panel),
+    var(--bg-main)
+  );
+  border-radius: 16px;
+  border: 1px solid var(--border-soft);
+  overflow: hidden;
+  box-shadow: 0 20px 40px var(--shadow-soft);
+}
+
+/* ================= CHAT HEADER ================= */
+
+.chat-header {
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid var(--border-soft);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.room-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* ================= MESSAGES ================= */
+
+.messages {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+  background: rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+/* Message bubble */
+
+.message {
+  max-width: 70%;
+  padding: 0.7rem 0.9rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-soft);
+  animation: messageFade 0.25s ease;
+}
+
+@keyframes messageFade {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.message.own {
+  align-self: flex-end;
+  background: linear-gradient(
+    135deg,
+    var(--slate-blue),
+    var(--navy-medium)
+  );
+}
+
+.message.private {
+  background: rgba(217, 200, 188, 0.18);
+  color: #1b3a4b;
+}
+
+.message.system {
+  align-self: center;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* ================= MESSAGE META ================= */
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.text {
+  margin-top: 0.3rem;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* ================= COMPOSER ================= */
+
+/* ================= COMPOSER BAR ================= */
+
+.composer {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem;
+  background: linear-gradient(
+    180deg,
+    var(--bg-panel),
+    var(--bg-main)
+  );
+  border-top: 1px solid var(--border-soft);
+}
+
+/* ===== SELECT (Recipient) ===== */
+
+.composer select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  background: rgba(244, 236, 236, 0.06);
+  color: var(--text-main);
+  border: 1px solid var(--border-soft);
+  padding: 0.7rem 2.2rem 0.7rem 0.9rem;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  min-width: 140px;
+  position: relative;
+}
+
+/* Custom dropdown arrow */
+.composer select {
+  background-image: 
+    linear-gradient(45deg, transparent 50%, var(--text-muted) 50%),
+    linear-gradient(135deg, var(--text-muted) 50%, transparent 50%);
+  background-position:
+    calc(100% - 18px) calc(50% - 3px),
+    calc(100% - 13px) calc(50% - 3px);
+  background-size: 6px 6px;
+  background-repeat: no-repeat;
+}
+
+/* Dropdown options */
+.composer select option {
+  background: var(--bg-panel);
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+/* Hover / focus */
+.composer select:hover,
+.composer select:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+
+/* ===== MESSAGE INPUT ===== */
+
+.composer input {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-soft);
+  color: var(--text-main);
+  padding: 0.75rem 1rem;
+  border-radius: 14px;
+  font-size: 0.95rem;
+}
+
+.composer input::placeholder {
+  color: var(--text-muted);
+}
+
+.composer input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* ===== SEND BUTTON ===== */
+
+.composer button {
+  background: linear-gradient(
+    135deg,
+    var(--sand-soft),
+    #ebebeb
+  );
+  color: #1b3a4b;
+  font-weight: 700;
+  padding: 0.75rem 1.2rem;
+  border-radius: 14px;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.composer button:hover {
+  box-shadow: 0 6px 16px rgba(217, 200, 188, 0.35);
+  transform: translateY(-1px);
+}
+
+
+/* ================= STATUS ================= */
+
+.status {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.error {
+  color: #ff8a8a;
+  font-weight: 600;
+}
+
+.muted {
+  color: var(--text-muted);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+  .chat-layout {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+}
+/* ================= AUTH ================= */
+
+.auth-wrapper {
+  height: calc(100vh - 120px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-card {
+  width: 360px;
+  background: linear-gradient(
+    180deg,
+    var(--bg-panel),
+    var(--bg-main)
+  );
+  padding: 1.6rem;
+  border-radius: 18px;
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 30px 60px var(--shadow-soft);
+}
+
+.auth-tabs {
+  display: flex;
+  margin-bottom: 1rem;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.auth-tabs button {
+  flex: 1;
+  background: transparent;
+  color: var(--text-muted);
+}
+
+.auth-tabs .active {
+  background: var(--bg-surface);
+  color: var(--text-main);
+}
+
+.auth-card input {
+  width: 100%;
+  margin-bottom: 0.7rem;
+}
+
+.auth-submit {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+/* ================= AUTH TITLE ================= */
+
+/* ================= AUTH CONTAINER ================= */
+
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.4rem;
+}
+
+/* ================= AUTH TITLE ================= */
+
+.auth-title {
+  font-size: 3rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-main);
+  text-align: center;
+
+  text-shadow:
+    0 6px 30px rgba(0, 0, 0, 0.65),
+    0 1px 0 rgba(255, 255, 255, 0.04);
+}

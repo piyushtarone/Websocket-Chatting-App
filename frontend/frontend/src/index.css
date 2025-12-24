@@ -1,0 +1,37 @@
+:root {
+  /* ===== Color Palette (from your image) ===== */
+  --navy-deep: #1b3a4b;
+  --navy-medium: #244c66;
+  --slate-blue: #4a6c85;
+  --sand-soft: #d9c8bc;
+
+  /* ===== Mapped UI Tokens ===== */
+  --bg-main: var(--navy-deep);
+  --bg-panel: var(--navy-medium);
+  --bg-surface: var(--slate-blue);
+
+  --accent: var(--sand-soft);
+
+  --text-main: #eef3f6;
+  --text-muted: #b6c4cf;
+
+  --border-soft: rgba(255, 255, 255, 0.08);
+  --shadow-soft: rgba(0, 0, 0, 0.35);
+
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin:5;
+  min-height: 100vh;
+  background: linear-gradient(
+    180deg,
+    var(--navy-deep),
+    #132a38
+  );
+  color: var(--text-main);
+}
